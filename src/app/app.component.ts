@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModelpopComponent } from './modelpop/modelpop.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Confirmable, myDecorator } from './decorators/confirmable.decorator';
+import { Confirmable } from './decorators/confirmable.decorator';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.myMethod();
   }
-  @Confirmable({title: 'tile', decription: 'decription'})
+  @Confirmable({title: 'Delete Confirmation', decription: 'Are you sure you want to delete?'})
   myMethod(): void {
     console.log('Hello, world!');
   }

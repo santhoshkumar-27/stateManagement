@@ -1,5 +1,8 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": "a4719a6b-40ec-47b9-aa2c-9f03465125d9"
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
@@ -75,6 +78,7 @@
               "browserTarget": "stateManagement:build:production"
             },
             "development": {
+              "port": 4301,
               "browserTarget": "stateManagement:build:development"
             }
           },

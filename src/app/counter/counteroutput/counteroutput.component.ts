@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Counter } from '../state/counter.interface';
+import { tap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-counteroutput',
@@ -16,8 +18,13 @@ export class CounteroutputComponent implements OnInit {
   // set inputOfCounter(value) {
   //   this.counter = value
   // }
-  counter$  = this.store.select('counter');
-  constructor(private store: Store<{counter: {counter: 0}}>) { }
+  counter$: Observable<Counter> = this.store.select('counter')
+    .pipe(
+      tap(
+        (response) => console.log('response', response)
+      )
+    );
+  constructor(private store: Store<{ counter: Counter }>) { }
 
   ngOnInit(): void {
   }

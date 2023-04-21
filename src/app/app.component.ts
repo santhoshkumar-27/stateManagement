@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModelpopComponent } from './modelpop/modelpop.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Confirmable, myDecorator } from './decorators/confirmable.decorator';
 
 @Component({
   selector: 'app-root',
@@ -13,25 +14,8 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.myMethod();
   }
-  @myDecorator('Delete confirmation', 'sat', 'modalService')
+  @Confirmable({title: 'tile', decription: 'decription'})
   myMethod(): void {
     console.log('Hello, world!');
   }
-}
-
-
-function myDecorator(a: string, b?: string, model: NgbModal) {
-  const dialogref = new ModelpopComponent(model)
-  function actualDecorator(target: any, propertyKey: string, descriptor: PropertyDescriptor) {
-    const originalMethod = descriptor.value;
-
-    descriptor.value = function (...args: any[]) {
-      console.log(`Calling method ${propertyKey}`);
-      return originalMethod.apply(this, args);
-    };
-
-    return descriptor;
-  }
-   // return the decorator
-   return actualDecorator;
 }

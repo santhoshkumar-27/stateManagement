@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Injector, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -13,6 +13,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModelpopComponent } from './modelpop/modelpop.component';
+import { ConfirmServiceService } from './confirm-service.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,13 @@ import { ModelpopComponent } from './modelpop/modelpop.component';
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     NgbModule,
   ],
-  providers: [],
+  providers: [ConfirmServiceService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  static injector: Injector;
+
+  constructor(private injector: Injector) {
+    AppModule.injector = injector;
+  }
+ }

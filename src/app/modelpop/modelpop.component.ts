@@ -1,5 +1,5 @@
 import { Component, OnInit, Optional, TemplateRef, ViewChild } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-modelpop',
@@ -7,19 +7,16 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./modelpop.component.scss']
 })
 export class ModelpopComponent implements OnInit {
-  @ViewChild('data') template!: TemplateRef<any>;
-  dialogref: any;
   title: string = '';
   decription: string = '';
-  constructor(@Optional() private modalService: NgbModal) {
+  constructor(private modalService: NgbActiveModal ) {
   }
-
-	open() {
-		this.dialogref = this.modalService.open(this.template, { ariaLabelledBy: 'modal-basic-title' })
-	}
 
 
   ngOnInit(): void {
+   
   }
-
+  close(condition: boolean) {
+    this.modalService.close(condition)
+  }
 }

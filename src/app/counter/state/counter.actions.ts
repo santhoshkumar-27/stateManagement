@@ -1,8 +1,7 @@
-import { createAction } from "@ngrx/store";
+import { createAction, props } from "@ngrx/store";
 
-const INCREMENT = 'INCREMENT';
-const DECREMENT = 'DECREMENT';
-const RESET = 'RESET';
-export const incrementAction = createAction(INCREMENT);
-export const decrementAction = createAction(DECREMENT);
-export const resetAction = createAction(RESET);
+export const incrementAction = createAction('INCREMENT');
+export const decrementAction = createAction('DECREMENT');
+export const resetAction = createAction('RESET');
+export const customIncrementAction = createAction('CUSTOMINCREMENTVALUE', props<{value: number}>());
+export const customDecrementAction = createAction('CUSTOMDECREMENTVALUE', props<{value: number}>());

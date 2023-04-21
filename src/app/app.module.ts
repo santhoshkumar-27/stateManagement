@@ -8,13 +8,20 @@ import { CounteroutputComponent } from './counter/counteroutput/counteroutput.co
 import { CounterbuttonComponent } from './counter/counterbutton/counterbutton.component';
 import { StoreModule } from '@ngrx/store';
 import { counterReducer } from './counter/state/counter.reducer';
+import { CustomCounterInputComponent } from './counter/custom-counter-input/custom-counter-input.component';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ModelpopComponent } from './modelpop/modelpop.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CountershowComponent,
     CounteroutputComponent,
-    CounterbuttonComponent
+    CounterbuttonComponent,
+    CustomCounterInputComponent,
+    ModelpopComponent
   ],
   imports: [
     BrowserModule,
@@ -22,6 +29,8 @@ import { counterReducer } from './counter/state/counter.reducer';
     StoreModule.forRoot({
       counter: counterReducer
     }),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

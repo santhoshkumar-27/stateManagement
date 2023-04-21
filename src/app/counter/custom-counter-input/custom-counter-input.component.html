@@ -1,0 +1,7 @@
+<div>
+    <input type="number" #inputNumber min="0" placeholder="give a custom number to increment or decrement" id="">
+</div>
+<div class="d-flex">
+    <button (click)="increment(inputNumber.value)">increment</button>
+    <button (click)="decrement(inputNumber.value)">decrement</button>
+</div>

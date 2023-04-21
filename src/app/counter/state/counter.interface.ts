@@ -4,4 +4,5 @@ export interface Action {
 }
 export interface Counter {
     counter: number;
+    projectName: string;
 }

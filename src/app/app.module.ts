@@ -22,7 +22,6 @@ import { counterReducer } from './counter/state/counter.reducer';
     StoreModule.forRoot({
       counter: counterReducer
     }),
-    StoreModule.forRoot({}, {})
   ],
   providers: [],
   bootstrap: [AppComponent]

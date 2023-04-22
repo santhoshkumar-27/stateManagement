@@ -5,3 +5,9 @@
     <button (click)="increment(inputNumber.value)">increment</button>
     <button (click)="decrement(inputNumber.value)">decrement</button>
 </div>
+<div>
+    <input type="text" #projectN placeholder="give a custom name to the project" id="">
+</div>
+<div class="d-flex">
+    <button (click)="onChangeProjectName(projectN.value)">change name</button>
+</div>

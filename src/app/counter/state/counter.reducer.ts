@@ -1,7 +1,7 @@
 import { createReducer, on } from "@ngrx/store";
 import { initialState } from "./counter.state";
 import { Action, Counter } from "./counter.interface";
-import { decrementAction, incrementAction, resetAction, customIncrementAction, customDecrementAction } from "./counter.actions";
+import { decrementAction, incrementAction, resetAction, customIncrementAction, customDecrementAction, changeProjectNameAction } from "./counter.actions";
 
 const _counterReducer = createReducer(initialState, on(
     incrementAction, (state) => {
@@ -29,6 +29,11 @@ const _counterReducer = createReducer(initialState, on(
     return {
         ...state,
         counter: state.counter - action.value
+    }
+}), on(changeProjectNameAction, (state, action) => {
+    return {
+        ...state,
+        projectName: action.projectName
     }
 })
 );

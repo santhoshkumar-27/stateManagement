@@ -41,7 +41,7 @@ export function Confirmable(
       const dialogRef = service.confirm(options);
       return dialogRef.pipe(take(1)).subscribe((confirmed: boolean) => {
         if (!!confirmed) {
-          originalMethod.apply(this, ...args);
+          originalMethod.apply(this,[ ...args]);
         }
       });
     };

@@ -19,6 +19,7 @@ import { HeaderComponent } from './header/header.component';
 import { PostsComponent } from './post/posts/posts.component';
 import { postReducer } from './post/state/post.reducer';
 import { appReducer } from './state/app.state';
+import { AddPostComponent } from './post/add-post/add-post.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { appReducer } from './state/app.state';
     ModelpopComponent,
     HomeComponent,
     HeaderComponent,
-    PostsComponent
+    PostsComponent,
+    AddPostComponent
   ],
   imports: [
     BrowserModule,

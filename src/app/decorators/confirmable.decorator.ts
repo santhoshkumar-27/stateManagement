@@ -48,3 +48,12 @@ export function Confirmable(
     return descriptor;
   };
 }
+
+  // @Confirmable({
+  //   title: 'Delete Confirmation', 
+  //   decription: 'Are you sure you want to delete?',
+  //   leftSideButton: 'Cancel',
+  //   rightSideButton: 'Save',
+  // })
+  // to call this decorator place above any method that to take user action
+  // @actualDecorator

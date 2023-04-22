@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
   constructor(private modalService: NgbModal) {}
   title = 'stateManagement';
   ngOnInit(): void {
-    this.myMethod('abce');
+    // this.myMethod('abce');
   }
   // @Confirmable({title: 'Delete Confirmation', decription: 'Are you sure you want to delete?'})
   // @actualDecorator

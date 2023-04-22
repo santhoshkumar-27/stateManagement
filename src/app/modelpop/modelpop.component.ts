@@ -9,6 +9,8 @@ import { NgbActiveModal, NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstra
 export class ModelpopComponent implements OnInit {
   title: string = '';
   decription: string = '';
+  rightSideButton: string = '';
+  leftSideButton: string = '';
   constructor(private modalService: NgbActiveModal ) {
   }
 

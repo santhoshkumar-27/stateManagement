@@ -15,6 +15,8 @@ export class ConfirmServiceService {
     dialogRef = this.dialog.open(ModelpopComponent);
     dialogRef.componentInstance.title =  data.title || 'Confirm';
     dialogRef.componentInstance.decription =  data.decription || 'Are you sure?';
+    dialogRef.componentInstance.rightSideButton =  data.rightSideButton || 'save';
+    dialogRef.componentInstance.leftSideButton =  data.leftSideButton || 'cancel';
     return dialogRef.closed;
   }
 }

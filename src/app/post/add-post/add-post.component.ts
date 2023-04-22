@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
 import { Confirmable } from 'src/app/decorators/confirmable.decorator';
+import { AppState } from 'src/app/state/app.state';
+import { addPostList } from '../state/post.action';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-post',
@@ -10,11 +14,12 @@ import { Confirmable } from 'src/app/decorators/confirmable.decorator';
 export class AddPostComponent implements OnInit {
   submitted: boolean = false;
   form!: FormGroup;
-  constructor(private fb: FormBuilder) { }
+  constructor(
+    private store: Store<AppState>,
+    private fb: FormBuilder,
+    private route: Router,
+  ) { }
 
-  get firstname() {
-    return this.form.get('firstName')
-  }
   ngOnInit() {
     this.form = this.fb.group({
       firstName: new FormControl('', Validators.required),
@@ -37,6 +42,7 @@ export class AddPostComponent implements OnInit {
     rightSideButton: 'Add',
   })
   saveDataOnState() {
-
+    this.store.dispatch(addPostList({data: this.form.value}))
+    this.route.navigate(['post'])
   }
 }

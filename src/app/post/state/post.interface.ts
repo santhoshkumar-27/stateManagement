@@ -2,7 +2,7 @@ export interface Post {
     postLists: PostList[]
 }
 
-interface PostList {
+export interface PostList {
     id: number;
     firstName: string,
     lastName: string

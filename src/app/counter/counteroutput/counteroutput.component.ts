@@ -20,11 +20,11 @@ export class CounteroutputComponent implements OnInit {
   //   this.counter = value
   // }
   counter$: Observable<Number> = this.store.select(getCounter)
-    .pipe(
-      tap(
-        (response) => console.log('counter update', response)
-      )
-    );
+    // .pipe(
+    //   tap(
+    //     (response) => console.log('counter update', response)
+    //   )
+    // );
   // when were we updating the state of counter object during counter update the projectName also get subscribed
   // this will also cause the performance issues so we need to use createSelector and createFeatureSelector
   constructor(private store: Store<{ counter: Counter }>) { }

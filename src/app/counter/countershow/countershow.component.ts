@@ -12,11 +12,11 @@ import { getProjectName } from '../state/counter.selector';
 export class CountershowComponent implements OnInit {
   counter = 0;
   profileName$ = this.store.select(getProjectName)
-  .pipe(
-    tap(
-      (response) => console.log('profile name', response)
-    )
-  );
+  // .pipe(
+  //   tap(
+  //     (response) => console.log('profile name', response)
+  //   )
+  // );
   constructor(private store: Store<{counter: Counter}>) { }
 
   ngOnInit(): void {

@@ -21,8 +21,10 @@
                             </div>
                         </ng-container>
                     </div>
-                    <div class="form-group">
-                        <button class="btn btn-primary">Register</button>
+                    <div class="form-group mt-2">
+                        <button class="btn btn-info me-2" routerLink="/post">Cancel</button>
+                        <button class="btn btn-primary" *ngIf="invokeSave">Create</button>
+                        <button class="btn btn-primary" *ngIf="!invokeSave">Update</button>
                     </div>
                 </form>
             </div>

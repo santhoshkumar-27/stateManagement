@@ -12,6 +12,7 @@
             <th>Id</th>
             <th>Firstname</th>
             <th>Lastname</th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
@@ -19,6 +20,9 @@
             <td>{{list.id}}</td>
             <td>{{list.firstName}}</td>
             <td>{{list.lastName}}</td>
+            <td>
+                <button class="btn btn-info" [routerLink]="['/edit', list.id]">Edit</button>
+            </td>
         </tr>
     </tbody>
 </table>

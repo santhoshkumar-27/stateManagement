@@ -23,6 +23,10 @@ const routes: Routes = [
     component: AddPostComponent,
   },
   {
+    path: 'edit/:id',
+    component: AddPostComponent,
+  },
+  {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'

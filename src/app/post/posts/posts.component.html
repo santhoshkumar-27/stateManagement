@@ -1,7 +1,23 @@
-<ng-container *ngFor="let list of postList$ | async">
+<!-- <ng-container *ngFor="let list of postList$ | async">
     <div>
         <p>{{list.id}}</p>
         <p>{{list.firstName}}</p>
         <p>{{list.lastName}}</p>
     </div>
-</ng-container>
+</ng-container> -->
+<table class="table table-striped" *ngIf="postList$ | async as postsList">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Firstname</th>
+            <th>Lastname</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let list of postsList">
+            <td>{{list.id}}</td>
+            <td>{{list.firstName}}</td>
+            <td>{{list.lastName}}</td>
+        </tr>
+    </tbody>
+</table>

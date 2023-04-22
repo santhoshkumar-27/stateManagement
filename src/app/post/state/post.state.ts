@@ -4,8 +4,13 @@ export const initialState: Post = {
     postLists: [
         {
             id: 1,
-            firstName: 'santhosh',
+            firstName: 'santhoshkumar',
             lastName: 'viswanathan'
-        }
+        },
+        {
+            id: 2,
+            firstName: 'xyz',
+            lastName: 'abc'
+        },
     ]
 }

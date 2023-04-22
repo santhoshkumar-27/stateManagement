@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { Counter } from '../state/counter.interface';
 import { tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { getCounter } from '../state/counter.selector';
 
 @Component({
   selector: 'app-counteroutput',
@@ -18,12 +19,14 @@ export class CounteroutputComponent implements OnInit {
   // set inputOfCounter(value) {
   //   this.counter = value
   // }
-  counter$: Observable<Counter> = this.store.select('counter')
+  counter$: Observable<Number> = this.store.select(getCounter)
     .pipe(
       tap(
-        (response) => console.log('response', response)
+        (response) => console.log('counter update', response)
       )
     );
+  // when were we updating the state of counter object during counter update the projectName also get subscribed
+  // this will also cause the performance issues so we need to use createSelector and createFeatureSelector
   constructor(private store: Store<{ counter: Counter }>) { }
 
   ngOnInit(): void {

@@ -16,6 +16,9 @@ import { ModelpopComponent } from './modelpop/modelpop.component';
 import { ConfirmServiceService } from './confirm-service.service';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
+import { PostsComponent } from './post/posts/posts.component';
+import { postReducer } from './post/state/post.reducer';
+import { appReducer } from './state/app.state';
 
 @NgModule({
   declarations: [
@@ -26,15 +29,17 @@ import { HeaderComponent } from './header/header.component';
     CustomCounterInputComponent,
     ModelpopComponent,
     HomeComponent,
-    HeaderComponent
+    HeaderComponent,
+    PostsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({
-      counter: counterReducer
+    StoreModule.forRoot(appReducer),
+    StoreDevtoolsModule.instrument({
+      // maxAge: 25,
+      logOnly: environment.production
     }),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     NgbModule,
   ],
   providers: [ConfirmServiceService],

@@ -14,6 +14,8 @@ import { environment } from '../environments/environment';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModelpopComponent } from './modelpop/modelpop.component';
 import { ConfirmServiceService } from './confirm-service.service';
+import { HomeComponent } from './home/home.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { ConfirmServiceService } from './confirm-service.service';
     CounteroutputComponent,
     CounterbuttonComponent,
     CustomCounterInputComponent,
-    ModelpopComponent
+    ModelpopComponent,
+    HomeComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

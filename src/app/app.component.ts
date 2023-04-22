@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.myMethod('abce');
   }
-  @Confirmable({title: 'Delete Confirmation', decription: 'Are you sure you want to delete?'})
+  // @Confirmable({title: 'Delete Confirmation', decription: 'Are you sure you want to delete?'})
   // @actualDecorator
   myMethod(data: string): void {
     console.log('Hello, world!', data);

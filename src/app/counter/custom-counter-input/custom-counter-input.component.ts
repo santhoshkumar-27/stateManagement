@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Counter } from '../state/counter.interface';
 import { Store } from '@ngrx/store';
-import { customIncrementAction, customDecrementAction, changeProjectNameAction } from '../state/counter.actions';
+import { customIncrementAction, customDecrementAction, changeProjectNameAction, projectNameReset } from '../state/counter.actions';
 
 @Component({
   selector: 'app-custom-counter-input',
@@ -24,5 +24,8 @@ export class CustomCounterInputComponent implements OnInit {
   }
   onChangeProjectName(projectName: string) {
     this.store.dispatch(changeProjectNameAction({projectName}))
+  }
+  onProjectNameReset() {
+    this.store.dispatch(projectNameReset())
   }
 }

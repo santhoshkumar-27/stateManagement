@@ -3,7 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Store } from '@ngrx/store';
 import { Confirmable } from 'src/app/decorators/confirmable.decorator';
 import { AppState } from 'src/app/state/app.state';
-import { addPostList } from '../state/post.action';
+import { addPostList, updatePost } from '../state/post.action';
 import { ActivatedRoute, Router } from '@angular/router';
 import { getPostById, getPostList } from '../state/post.selector';
 
@@ -56,6 +56,8 @@ export class AddPostComponent implements OnInit, OnDestroy {
     if (this.form.invalid) { return };
     if (this.invokeSave) {
       this.saveDataOnState();
+    } else {
+      this.updateDataOnState()
     }
   }
 
@@ -67,6 +69,17 @@ export class AddPostComponent implements OnInit, OnDestroy {
   })
   saveDataOnState() {
     this.store.dispatch(addPostList({ data: this.form.value }))
+    this.route.navigate(['post'])
+  }
+
+  @Confirmable({
+    title: 'Update confirmation',
+    decription: 'Are you sure you want to Update?',
+    leftSideButton: 'Cancel',
+    rightSideButton: 'Update',
+  })
+  updateDataOnState() {
+    this.store.dispatch(updatePost({ data: {...this.form.value, id: this.id} }))
     this.route.navigate(['post'])
   }
   ngOnDestroy(): void {

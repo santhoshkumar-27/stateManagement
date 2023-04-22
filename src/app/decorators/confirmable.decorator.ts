@@ -1,6 +1,6 @@
 
 // Where “target” represents the class containing the method we’re decorating,
-function actualDecorator(target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+export function actualDecorator(target: any, propertyKey: string, descriptor: PropertyDescriptor) {
   const originalMethod = descriptor.value;
   console.log('target', descriptor)
   descriptor.value = function (...args: any[]) {

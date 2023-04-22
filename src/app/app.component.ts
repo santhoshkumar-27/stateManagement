@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModelpopComponent } from './modelpop/modelpop.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Confirmable } from './decorators/confirmable.decorator';
+import { Confirmable, actualDecorator } from './decorators/confirmable.decorator';
 
 @Component({
   selector: 'app-root',
@@ -12,10 +12,11 @@ export class AppComponent implements OnInit {
   constructor(private modalService: NgbModal) {}
   title = 'stateManagement';
   ngOnInit(): void {
-    this.myMethod();
+    this.myMethod('abce');
   }
   @Confirmable({title: 'Delete Confirmation', decription: 'Are you sure you want to delete?'})
-  myMethod(): void {
-    console.log('Hello, world!');
+  // @actualDecorator
+  myMethod(data: string): void {
+    console.log('Hello, world!', data);
   }
 }

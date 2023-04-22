@@ -2,3 +2,13 @@
 
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';
+
+
+@media (max-width:426px) {
+    .modal-dialog {
+        height: 100%;
+        .modal-content {
+            height: 100%;
+        }
+    }
+}

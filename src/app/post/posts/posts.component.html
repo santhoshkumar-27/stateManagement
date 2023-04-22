@@ -5,6 +5,7 @@
         <p>{{list.lastName}}</p>
     </div>
 </ng-container> -->
+<button class="btn btn-primary" routerLink="/add-post">Add post list</button>
 <table class="table table-striped" *ngIf="postList$ | async as postsList">
     <thead>
         <tr>

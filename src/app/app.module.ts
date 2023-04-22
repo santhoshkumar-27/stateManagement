@@ -20,6 +20,7 @@ import { PostsComponent } from './post/posts/posts.component';
 import { postReducer } from './post/state/post.reducer';
 import { appReducer } from './state/app.state';
 import { AddPostComponent } from './post/add-post/add-post.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,8 @@ import { AddPostComponent } from './post/add-post/add-post.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
     StoreModule.forRoot(appReducer),
     StoreDevtoolsModule.instrument({
       // maxAge: 25,

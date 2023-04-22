@@ -5,10 +5,10 @@ import { postReducer } from "../post/state/post.reducer";
 
 export interface AppState {
     counter: Counter;
-    post: Post;
+    posts: Post;
 }
 
 export const appReducer = {
     counter: counterReducer,
-    post: postReducer,
+    posts: postReducer,
 }

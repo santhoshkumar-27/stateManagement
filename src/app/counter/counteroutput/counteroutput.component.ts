@@ -4,6 +4,7 @@ import { Counter } from '../state/counter.interface';
 import { tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { getCounter } from '../state/counter.selector';
+import { AppState } from 'src/app/state/app.state';
 
 @Component({
   selector: 'app-counteroutput',
@@ -27,7 +28,7 @@ export class CounteroutputComponent implements OnInit {
     // );
   // when were we updating the state of counter object during counter update the projectName also get subscribed
   // this will also cause the performance issues so we need to use createSelector and createFeatureSelector
-  constructor(private store: Store<{ counter: Counter }>) { }
+  constructor(private store: Store<AppState>) { }
 
   ngOnInit(): void {
   }

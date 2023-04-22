@@ -19,7 +19,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'counter',
+    redirectTo: 'home',
     pathMatch: 'full'
   }
 ];

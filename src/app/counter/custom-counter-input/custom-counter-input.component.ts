@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Counter } from '../state/counter.interface';
 import { Store } from '@ngrx/store';
 import { customIncrementAction, customDecrementAction, changeProjectNameAction, projectNameReset } from '../state/counter.actions';
+import { AppState } from 'src/app/state/app.state';
 
 @Component({
   selector: 'app-custom-counter-input',
@@ -10,7 +11,7 @@ import { customIncrementAction, customDecrementAction, changeProjectNameAction, 
 })
 export class CustomCounterInputComponent implements OnInit {
 
-  constructor(private store: Store<{counter: Counter}>) { }
+  constructor(private store: Store<AppState>) { }
 
   ngOnInit(): void {
   }

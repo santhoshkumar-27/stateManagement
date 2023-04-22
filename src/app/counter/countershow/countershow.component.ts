@@ -3,6 +3,7 @@ import { Counter } from '../state/counter.interface';
 import { Store } from '@ngrx/store';
 import { tap } from 'rxjs';
 import { getProjectName } from '../state/counter.selector';
+import { AppState } from 'src/app/state/app.state';
 
 @Component({
   selector: 'app-countershow',
@@ -17,7 +18,7 @@ export class CountershowComponent implements OnInit {
   //     (response) => console.log('profile name', response)
   //   )
   // );
-  constructor(private store: Store<{counter: Counter}>) { }
+  constructor(private store: Store<AppState>) { }
 
   ngOnInit(): void {
   }

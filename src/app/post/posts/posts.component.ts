@@ -3,6 +3,8 @@ import { Post } from '../state/post.interface';
 import { Store } from '@ngrx/store';
 import { getPostList } from '../state/post.selector';
 import { AppState } from 'src/app/state/app.state';
+import { deletePost } from '../state/post.action';
+import { Confirmable } from 'src/app/decorators/confirmable.decorator';
 
 @Component({
   selector: 'app-posts',
@@ -15,5 +17,13 @@ export class PostsComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  @Confirmable({
+    title: 'Delete confirmation',
+    decription: 'Are you sure you want to delete?',
+    leftSideButton: 'Cancel',
+    rightSideButton: 'Delete',
+  })
+  onDelete(id: any) {
+    this.store.dispatch(deletePost({id}))
+  }
 }

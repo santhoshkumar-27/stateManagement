@@ -1,6 +1,8 @@
 import { createReducer, on } from "@ngrx/store"
 import { initialState } from "./post.state"
 import { addPostList, updatePost } from "./post.action";
+import { deepClone } from "src/app/shared/utilit";
+import { PostList } from "./post.interface";
 
 const _postReducer = createReducer(initialState, on(
     addPostList, (state, action) => {
@@ -18,11 +20,14 @@ const _postReducer = createReducer(initialState, on(
     }
 ), on(updatePost, (state, action) => {
     const data = action.data;
+    // const newPostLists = deepClone<PostList[]>(state.postLists);
+    // const index = newPostLists.findIndex((list: any) => list.id == data.id);
+    // newPostLists[index] = data;
+    const newPostLists = state.postLists.map((list: PostList) => list.id == data.id ? data : list)
     return {
         ...state,
         postLists: [
-            ...state.postLists,
-            data
+            ...newPostLists
         ]
     }
 }));

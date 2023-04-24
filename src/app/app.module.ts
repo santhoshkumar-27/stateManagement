@@ -47,7 +47,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     }),
     NgbModule,
   ],
-  providers: [ConfirmServiceService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {

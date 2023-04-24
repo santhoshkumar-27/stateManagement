@@ -14,7 +14,7 @@ export function actualDecorator(target: any, propertyKey: string, descriptor: Pr
 // https://medium.com/capital-one-tech/custom-typescript-decorators-using-rxjs-and-angular-services-6ddd1079f683
 
 
-import { Inject, Type } from '@angular/core';
+import { Inject, Type, inject } from '@angular/core';
 import { take } from 'rxjs/operators';
 import { AppModule } from '../app.module';
 import { ConfirmServiceService } from '../confirm-service.service';
@@ -29,7 +29,7 @@ export function Confirmable(
   return function (
     target: Object,
     propertyKey: string,
-    descriptor: PropertyDescriptor
+    descriptor: PropertyDescriptor,
   ) {
     // the usual, caching the original implementation
     const originalMethod = descriptor.value;

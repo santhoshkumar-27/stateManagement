@@ -6,9 +6,13 @@ import { PostsComponent } from './post/posts/posts.component';
 import { AddPostComponent } from './post/add-post/add-post.component';
 
 const routes: Routes = [
+  // {
+  //   path: 'counter',
+  //   component: CountershowComponent,
+  // },
   {
     path: 'counter',
-    component: CountershowComponent,
+    loadChildren: () => import('./counter/counter/counter.module').then(m => m.CounterModule)
   },
   {
     path: 'home',
@@ -16,16 +20,20 @@ const routes: Routes = [
   },
   {
     path: 'post',
-    component: PostsComponent,
+    loadChildren: () => import('./post/post/post.module').then(m => m.PostModule)
   },
-  {
-    path: 'add-post',
-    component: AddPostComponent,
-  },
-  {
-    path: 'edit/:id',
-    component: AddPostComponent,
-  },
+  // {
+  //   path: 'post',
+  //   component: PostsComponent,
+  // },
+  // {
+  //   path: 'add-post',
+  //   component: AddPostComponent,
+  // },
+  // {
+  //   path: 'edit/:id',
+  //   component: AddPostComponent,
+  // },
   {
     path: '',
     redirectTo: 'home',

@@ -21,19 +21,15 @@ import { postReducer } from './post/state/post.reducer';
 import { appReducer } from './state/app.state';
 import { AddPostComponent } from './post/add-post/add-post.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { IndexComponent } from './post/index/index.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CountershowComponent,
-    CounteroutputComponent,
-    CounterbuttonComponent,
-    CustomCounterInputComponent,
     ModelpopComponent,
     HomeComponent,
     HeaderComponent,
-    PostsComponent,
-    AddPostComponent
+    IndexComponent,
   ],
   imports: [
     BrowserModule,

@@ -6,6 +6,9 @@ import { CounterbuttonComponent } from '../counterbutton/counterbutton.component
 import { CounteroutputComponent } from '../counteroutput/counteroutput.component';
 import { CountershowComponent } from '../countershow/countershow.component';
 import { CustomCounterInputComponent } from '../custom-counter-input/custom-counter-input.component';
+import { StoreModule } from '@ngrx/store';
+import { counterReducer } from '../state/counter.reducer';
+import { COUNTER_STATE_NAME } from '../state/counter.selector';
 
 
 @NgModule({
@@ -17,7 +20,8 @@ import { CustomCounterInputComponent } from '../custom-counter-input/custom-coun
   ],
   imports: [
     CommonModule,
-    CounterRoutingModule
+    CounterRoutingModule,
+    StoreModule.forFeature(COUNTER_STATE_NAME, counterReducer)
   ]
 })
 export class CounterModule { }

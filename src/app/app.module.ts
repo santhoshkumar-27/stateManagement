@@ -36,7 +36,8 @@ import { IndexComponent } from './post/index/index.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    StoreModule.forRoot(appReducer),
+    // StoreModule.forRoot(appReducer),
+    StoreModule.forRoot({}),
     StoreDevtoolsModule.instrument({
       // maxAge: 25,
       logOnly: environment.production

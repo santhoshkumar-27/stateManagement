@@ -5,6 +5,9 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
+import { authReducer } from './state/auth.reducer';
+import { AUTH_STATE_NAME } from './state/auth.state';
 
 
 @NgModule({
@@ -17,6 +20,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AuthRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    StoreModule.forFeature(AUTH_STATE_NAME, authReducer)
   ]
 })
 export class AuthModule { }

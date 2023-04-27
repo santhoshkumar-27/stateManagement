@@ -2,16 +2,26 @@
     <div class="col-md-6 offset-md-3">
         <h3>login</h3>
         <hr>
-        <form name="userInfor" [formGroup]="userInfor">
+        <form name="userInfor" [formGroup]="userInfor" (ngSubmit)="onLoginFormSubmit()">
             <div class="mb-3">
                 <label for="userName">User name</label>
                 <input type="text" class="form-control" name="userName" id="userName" formControlName="userName">
             </div>
+            <ng-container *ngIf="f['userName'].touched && f['userName'].invalid">
+                <ng-container *ngIf="getControls('userName')!['errors']!['required']">
+                    <span class="invalid-feedback">User name is required</span>
+                </ng-container>
+            </ng-container>
             <div class="mb-3">
                 <label for="password">PassWord</label>
-                <input type="password" class="form-control" name="password" id="password" formControlName="password">
+                <input type="password" class="form-control" name="password" id="password" formControlName="passWord">
+                <ng-container *ngIf="f['passWord'].touched && f['passWord'].invalid">
+                    <ng-container *ngIf="getControls('passWord')!['errors']!['required']">
+                        <span class="invalid-feedback">Password is required</span>
+                    </ng-container>
+                </ng-container>
             </div>
-            <button type="submit" class="btn btn-primary">Login</button>
+            <button type="submit" class="btn btn-primary" [disabled]="userInfor.invalid">Login</button>
         </form>
     </div>
 </div>

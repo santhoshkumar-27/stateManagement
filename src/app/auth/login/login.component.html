@@ -1,0 +1,17 @@
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <h3>login</h3>
+        <hr>
+        <form name="userInfor" [formGroup]="userInfor">
+            <div class="mb-3">
+                <label for="userName">User name</label>
+                <input type="text" class="form-control" name="userName" id="userName" formControlName="userName">
+            </div>
+            <div class="mb-3">
+                <label for="password">PassWord</label>
+                <input type="password" class="form-control" name="password" id="password" formControlName="password">
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+    </div>
+</div>

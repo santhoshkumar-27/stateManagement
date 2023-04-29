@@ -3,7 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/state/app.state';
 import { authLoginAction } from '../state/auth.action';
-import { getUsernameAndPassword } from '../state/auth.selector';
+import { getLoginStatus, getUsernameAndPassword } from '../state/auth.selector';
 import { Confirmable } from 'src/app/decorators/confirmable.decorator';
 
 @Component({
@@ -13,7 +13,8 @@ import { Confirmable } from 'src/app/decorators/confirmable.decorator';
 })
 export class LoginComponent implements OnInit {
   userInfor!: FormGroup;
-  loginDetails$ = this.store.select(getUsernameAndPassword)
+  loginDetails$ = this.store.select(getUsernameAndPassword);
+  loginStatus$ = this.store.select(getLoginStatus);
   constructor(
     private fb: FormBuilder,
     private store: Store<AppState>,

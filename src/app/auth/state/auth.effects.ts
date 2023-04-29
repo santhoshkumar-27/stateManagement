@@ -6,7 +6,7 @@ import { AuthService } from "src/app/shared/services/auth.service";
 import { of } from "rxjs";
 import { AppState } from "src/app/state/app.state";
 import { Store } from "@ngrx/store";
-import { loadingEndAction, loadingStartAction } from "src/app/shared/state/shared.action";
+import { errorEndAction, errorStartAction, loadingEndAction, loadingStartAction } from "src/app/shared/state/shared.action";
 @Injectable()
 export class AuthEffects {
 
@@ -26,11 +26,23 @@ export class AuthEffects {
                     debounceTime(1000),
                     map((value) => {
                         this.store.dispatch(loadingEndAction())
+                        this.store.dispatch(errorStartAction({
+                            error: {
+                                message: 'Successfully logged in',
+                                type: 'SUCCESS'
+                            }
+                        }))
                         return Auth.loginSuccessAction()
                     }
                     ),
                     catchError(() => {
                         this.store.dispatch(loadingEndAction())
+                        this.store.dispatch(errorStartAction({
+                            error: {
+                                message: 'Failed to logged in',
+                                type: 'FAILURE'
+                            }
+                        }))
                         return of(Auth.loginFailedAction())
                     })
                 )

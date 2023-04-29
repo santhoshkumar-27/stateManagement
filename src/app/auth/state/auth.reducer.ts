@@ -5,7 +5,7 @@ import { authLoginAction } from "./auth.action"
 const _authReducer = createReducer(initialState, on(authLoginAction, (state, action) => {
     return {
         ...state,
-        // action.data
+        loginCredentials: {...action.loginCredentials}
     }
 }))
 

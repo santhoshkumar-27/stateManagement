@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/state/app.state';
+import { authLoginAction } from '../state/auth.action';
+import { getUsernameAndPassword } from '../state/auth.selector';
 
 @Component({
   selector: 'app-login',
@@ -8,14 +12,16 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 })
 export class LoginComponent implements OnInit {
   userInfor!: FormGroup;
+  loginDetails$ = this.store.select(getUsernameAndPassword)
   constructor(
     private fb: FormBuilder,
+    private store: Store<AppState>,
   ) { }
 
   ngOnInit(): void {
     this.userInfor = this.fb.group({
       userName: new FormControl('', [Validators.required]),
-      passWord: new FormControl('', [Validators.required])
+      password: new FormControl('', [Validators.required])
     })
   }
   get f() {
@@ -27,5 +33,7 @@ export class LoginComponent implements OnInit {
   onLoginFormSubmit() {
     const payload ={ ...this.userInfor.value}
     console.log(payload);
+    this.store.dispatch(authLoginAction({loginCredentials: payload}))
+    this.userInfor.reset();
   }
 }

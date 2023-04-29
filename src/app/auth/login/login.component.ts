@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/state/app.state';
 import { authLoginAction } from '../state/auth.action';
 import { getUsernameAndPassword } from '../state/auth.selector';
+import { Confirmable } from 'src/app/decorators/confirmable.decorator';
 
 @Component({
   selector: 'app-login',
@@ -30,6 +31,12 @@ export class LoginComponent implements OnInit {
   getControls(controllerName: string): FormControl {
     return (this.userInfor.get(controllerName) as FormControl)
   }
+  @Confirmable({
+    title: 'Login confirmation',
+    decription: 'Are you sure you want to login?',
+    leftSideButton: 'Cancel',
+    rightSideButton: 'Login',
+  })
   onLoginFormSubmit() {
     const payload ={ ...this.userInfor.value}
     console.log(payload);

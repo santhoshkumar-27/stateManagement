@@ -8,6 +8,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { authReducer } from './state/auth.reducer';
 import { AUTH_STATE_NAME } from './state/auth.state';
+import { EffectsModule } from '@ngrx/effects';
+import { AuthEffects } from './state/auth.effects';
 
 
 @NgModule({
@@ -20,6 +22,7 @@ import { AUTH_STATE_NAME } from './state/auth.state';
     AuthRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    EffectsModule.forFeature([AuthEffects]),
     StoreModule.forFeature(AUTH_STATE_NAME, authReducer)
   ]
 })

@@ -6,6 +6,6 @@ export const initialState : AuthState = {
         password: ''
     },
     loginStatus: {
-        message: 'Not Logined'
+        message: 'Not logged in'
     }
 }

@@ -16,7 +16,7 @@ const _authReducer = createReducer(initialState,
         return {
             ...state,
             loginStatus: {
-                message: 'Login Process Success'
+                message: 'logged in Success'
             }
         }
     }),
@@ -24,7 +24,7 @@ const _authReducer = createReducer(initialState,
         return {
             ...state,
             loginStatus: {
-                message: 'Login Process Failed'
+                message: 'logged in Failed'
             }
         }
     })

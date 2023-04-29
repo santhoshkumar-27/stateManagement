@@ -5,5 +5,10 @@ export const initialState: SharedState = {
     loadingInformation: {
         isLoading: false,
         loadingMessage: 'Loading Message'
+    },
+    errorInformation: {
+        show: false,
+        message: '',
+        type: 'SUCCESS',
     }
 }

@@ -8,3 +8,4 @@
     </div>
 </div>
 <app-loading-spinner *ngIf="(loadingInformation$ | async)?.isLoading"></app-loading-spinner>
+<app-error-message  *ngIf="(errorInformation$ | async)?.show"></app-error-message>

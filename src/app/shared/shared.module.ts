@@ -5,12 +5,14 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { SHARED_STATE_NAME } from './state/shared.state';
 import { sharedReducer } from './state/shared.reducer';
+import { ErrorMessageComponent } from './components/error-message/error-message.component';
 
 
 
 @NgModule({
   declarations: [
     LoadingSpinnerComponent,
+    ErrorMessageComponent,
   ],
   imports: [
     CommonModule,
@@ -19,6 +21,7 @@ import { sharedReducer } from './state/shared.reducer';
   ],
   exports: [
     LoadingSpinnerComponent,
+    ErrorMessageComponent
   ]
 })
 export class SharedModule { }

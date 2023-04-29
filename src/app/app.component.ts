@@ -4,7 +4,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Confirmable, actualDecorator } from './decorators/confirmable.decorator';
 import { AppState } from './state/app.state';
 import { Store } from '@ngrx/store';
-import { sharedLoadingSelector } from './shared/state/shared.selector';
+import { sharedErrorSelector, sharedLoadingSelector } from './shared/state/shared.selector';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +12,8 @@ import { sharedLoadingSelector } from './shared/state/shared.selector';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  loadingInformation$ = this.store.select(sharedLoadingSelector)
+  loadingInformation$ = this.store.select(sharedLoadingSelector);
+  errorInformation$ = this.store.select(sharedErrorSelector)
   constructor(private store: Store<AppState>) {}
   title = 'stateManagement';
   ngOnInit(): void {

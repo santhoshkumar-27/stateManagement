@@ -1,0 +1,12 @@
+<div class="error-message">
+    <div class="w-55 py-3 px-3 d-flex justify-content-between text-light"
+    [ngClass]="{
+        'bg-success': (errorMessage$ | async)?.type === 'SUCCESS',
+        'bg-danger': (errorMessage$ | async)?.type === 'FAILURE'
+    }">
+        <p class="mb-0">{{(errorMessage$ | async)?.message}}</p>
+        <span class="cursor-pointer" (click)="onCloseToaster()">
+            <i class="bi bi-x-circle"></i>
+        </span>
+    </div>
+</div>

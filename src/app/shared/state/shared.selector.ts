@@ -4,4 +4,5 @@ import { SHARED_STATE_NAME } from "./shared.state";
 
 const sharedState = createFeatureSelector<SharedState>(SHARED_STATE_NAME);
 
-export const sharedLoadingSelector = createSelector(sharedState, (state) => state.loadingInformation)
+export const sharedLoadingSelector = createSelector(sharedState, (state) => state.loadingInformation);
+export const sharedErrorSelector = createSelector(sharedState, (state) => state.errorInformation);

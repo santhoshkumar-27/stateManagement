@@ -1,6 +1,6 @@
 import { createReducer, on } from "@ngrx/store";
 import { initialState } from "./shared.state";
-import { loadingEndAction, loadingStartAction } from "./shared.action";
+import { errorEndAction, errorStartAction, loadingEndAction, loadingStartAction } from "./shared.action";
 
 const _sharedReducer = createReducer(initialState,
     on(loadingStartAction, (state, action) => {
@@ -18,6 +18,26 @@ const _sharedReducer = createReducer(initialState,
             loadingInformation: {
                 isLoading: false,
                 loadingMessage: state.loadingInformation.loadingMessage
+            }
+        }
+    }),
+    on(errorStartAction, (state, action) => {
+        return {
+            ...state,
+            errorInformation: {
+                show: true,
+                message: action.error.message,
+                type: action.error.type,
+            }
+        }
+    }),
+    on(errorEndAction, (state) => {
+        return {
+            ...state,
+            errorInformation: {
+                show: false,
+                message: '',
+                type: 'SUCCESS'
             }
         }
     }),

@@ -22,6 +22,7 @@ import { appReducer } from './state/app.state';
 import { AddPostComponent } from './post/add-post/add-post.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IndexComponent } from './post/index/index.component';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { IndexComponent } from './post/index/index.component';
     FormsModule,
     ReactiveFormsModule,
     // StoreModule.forRoot(appReducer),
+    EffectsModule.forRoot([]),
     StoreModule.forRoot({}),
     StoreDevtoolsModule.instrument({
       // maxAge: 25,

@@ -4,6 +4,6 @@ export const SHARED_STATE_NAME = 'shared';
 export const initialState: SharedState = {
     loadingInformation: {
         isLoading: false,
-        loadingMessage: ''
+        loadingMessage: 'Loading Message'
     }
 }

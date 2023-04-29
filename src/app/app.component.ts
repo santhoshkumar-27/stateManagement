@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ModelpopComponent } from './modelpop/modelpop.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Confirmable, actualDecorator } from './decorators/confirmable.decorator';
+import { AppState } from './state/app.state';
+import { Store } from '@ngrx/store';
+import { sharedLoadingSelector } from './shared/state/shared.selector';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +12,8 @@ import { Confirmable, actualDecorator } from './decorators/confirmable.decorator
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  constructor(private modalService: NgbModal) {}
+  loadingInformation$ = this.store.select(sharedLoadingSelector)
+  constructor(private store: Store<AppState>) {}
   title = 'stateManagement';
   ngOnInit(): void {
     // this.myMethod('abce');

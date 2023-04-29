@@ -7,4 +7,4 @@
         </div>
     </div>
 </div>
-<app-loading-spinner></app-loading-spinner>
+<app-loading-spinner *ngIf="(loadingInformation$ | async)?.isLoading"></app-loading-spinner>

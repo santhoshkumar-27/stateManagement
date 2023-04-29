@@ -13,6 +13,7 @@ import { HeaderComponent } from './header/header.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IndexComponent } from './post/index/index.component';
 import { EffectsModule } from '@ngrx/effects';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { EffectsModule } from '@ngrx/effects';
       logOnly: environment.production
     }),
     NgbModule,
+    SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

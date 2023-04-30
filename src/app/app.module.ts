@@ -14,7 +14,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IndexComponent } from './post/index/index.component';
 import { EffectsModule } from '@ngrx/effects';
 import { SharedModule } from './shared/shared.module';
-import { appReducer } from './state/app.state';
+import { appReducer, clearState } from './state/app.state';
 import { appEffects } from './state/app.effects';
 
 @NgModule({
@@ -31,7 +31,7 @@ import { appEffects } from './state/app.effects';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    StoreModule.forRoot(appReducer),
+    StoreModule.forRoot(appReducer, { metaReducers: [clearState]}),
     EffectsModule.forRoot([...appEffects]),
     // StoreModule.forRoot({}),
     StoreDevtoolsModule.instrument({

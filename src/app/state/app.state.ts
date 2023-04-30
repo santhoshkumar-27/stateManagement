@@ -1,3 +1,4 @@
+import { AUTO_LOGOUT } from "../auth/state/auth.action";
 import { AuthState } from "../auth/state/auth.interface";
 import { authReducer } from "../auth/state/auth.reducer";
 import { AUTH_STATE_NAME } from "../auth/state/auth.state";
@@ -23,4 +24,13 @@ export const appReducer = {
     // posts: postReducer,
     [AUTH_STATE_NAME]: authReducer,
     // shared: sharedReducer
+}
+
+export function clearState(reducer: any) {
+    return function (state: any, action: any) {
+        if (action.type === AUTO_LOGOUT) {
+            state = undefined;
+        }
+        return reducer(state, action);
+    };
 }

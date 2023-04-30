@@ -119,4 +119,13 @@ export class AuthEffects {
             })
         )
     }, { dispatch: false })
+
+    autoLogout$ = createEffect(() => {
+        return this.action$.pipe(
+            ofType(Auth.autoLogoutAction),
+            map((action) => {
+                return this.router.navigate(['auth'])
+            })
+        )
+    }, { dispatch: false })
 }

@@ -4,6 +4,7 @@ import { CountershowComponent } from './counter/countershow/countershow.componen
 import { HomeComponent } from './home/home.component';
 import { PostsComponent } from './post/posts/posts.component';
 import { AddPostComponent } from './post/add-post/add-post.component';
+import { AuthGuard } from './shared/guard/auth.guard';
 
 const routes: Routes = [
   // {
@@ -12,15 +13,18 @@ const routes: Routes = [
   // },
   {
     path: 'counter',
-    loadChildren: () => import('./counter/counter/counter.module').then(m => m.CounterModule)
+    canActivate: [AuthGuard],
+    loadChildren: () => import('./counter/counter/counter.module').then(m => m.CounterModule),
   },
   {
     path: 'home',
+    canActivate: [AuthGuard],
     component: HomeComponent,
   },
   {
     path: 'post',
-    loadChildren: () => import('./post/post/post.module').then(m => m.PostModule)
+    canActivate: [AuthGuard],
+    loadChildren: () => import('./post/post/post.module').then(m => m.PostModule),
   },
   {
     path: 'auth',

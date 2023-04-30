@@ -86,15 +86,15 @@ export class AuthEffects {
 
     loginRedirect$ = createEffect(() => {
         return this.action$.pipe(
-            ofType(Auth.loginSuccessAction),
+            ofType(...[Auth.loginSuccessAction, Auth.signupSuccessAction]),
             map((action) => this.router.navigate(['home']))
         )
     }, { dispatch: false });
 
-    signUpRedirect$ = createEffect(() => {
-        return this.action$.pipe(
-            ofType(Auth.signupSuccessAction),
-            map((action) => this.router.navigate(['home']))
-        )
-    }, { dispatch: false });
+    // signUpRedirect$ = createEffect(() => {
+    //     return this.action$.pipe(
+    //         ofType(Auth.signupSuccessAction),
+    //         map((action) => this.router.navigate(['home']))
+    //     )
+    // }, { dispatch: false });
 }

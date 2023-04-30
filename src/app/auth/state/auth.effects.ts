@@ -124,6 +124,13 @@ export class AuthEffects {
         return this.action$.pipe(
             ofType(Auth.autoLogoutAction),
             map((action) => {
+                this.authService.getUserClear();
+                this.store.dispatch(errorStartAction({
+                    error: {
+                        message: 'Successfully logout',
+                        type: 'SUCCESS'
+                    }
+                }))
                 return this.router.navigate(['auth'])
             })
         )

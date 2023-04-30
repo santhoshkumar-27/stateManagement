@@ -33,4 +33,7 @@ export class AuthService {
     }
     return null;
   }
+  getUserClear(): void {
+    localStorage.clear();
+  }
 }

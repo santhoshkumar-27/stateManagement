@@ -40,7 +40,6 @@ export class LoginComponent implements OnInit {
   })
   onLoginFormSubmit() {
     const payload ={ ...this.userInfor.value}
-    console.log(payload);
     this.store.dispatch(authLoginAction({loginCredentials: payload}))
     this.userInfor.reset();
   }

@@ -23,7 +23,7 @@ import { AuthEffects } from './state/auth.effects';
     FormsModule,
     ReactiveFormsModule,
     EffectsModule.forFeature([AuthEffects]),
-    StoreModule.forFeature(AUTH_STATE_NAME, authReducer)
+    // StoreModule.forFeature(AUTH_STATE_NAME, authReducer)
   ]
 })
 export class AuthModule { }

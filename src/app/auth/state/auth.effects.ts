@@ -7,13 +7,15 @@ import { of } from "rxjs";
 import { AppState } from "src/app/state/app.state";
 import { Store } from "@ngrx/store";
 import { errorEndAction, errorStartAction, loadingEndAction, loadingStartAction } from "src/app/shared/state/shared.action";
+import { Router } from "@angular/router";
 @Injectable()
 export class AuthEffects {
 
     constructor(
         private action$: Actions,
         private authService: AuthService,
-        private store: Store<AppState>
+        private store: Store<AppState>,
+        private router: Router,
     ) { }
 
     loginedUser$ = createEffect(() => this.action$.pipe(
@@ -48,4 +50,11 @@ export class AuthEffects {
                 )
         })
     ));
+
+    loginRedirect$ = createEffect(() => {
+        return this.action$.pipe(
+            ofType(Auth.loginSuccessAction),
+            map((action) => this.router.navigate(['home']))
+        )
+    }, {dispatch: false})
 }

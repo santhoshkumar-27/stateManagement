@@ -14,6 +14,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IndexComponent } from './post/index/index.component';
 import { EffectsModule } from '@ngrx/effects';
 import { SharedModule } from './shared/shared.module';
+import { appReducer } from './state/app.state';
 
 @NgModule({
   declarations: [
@@ -29,9 +30,9 @@ import { SharedModule } from './shared/shared.module';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    // StoreModule.forRoot(appReducer),
+    StoreModule.forRoot(appReducer),
     EffectsModule.forRoot([]),
-    StoreModule.forRoot({}),
+    // StoreModule.forRoot({}),
     StoreDevtoolsModule.instrument({
       // maxAge: 25,
       logOnly: environment.production

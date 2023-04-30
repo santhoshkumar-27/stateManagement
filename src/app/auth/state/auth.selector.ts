@@ -5,4 +5,5 @@ import { AuthState, Login } from "./auth.interface";
 const authState = createFeatureSelector<AuthState>(AUTH_STATE_NAME)
 
 export const getUsernameAndPassword = createSelector(authState, (state) => state.loginCredentials);
-export const getLoginStatus = createSelector(authState, (state) => state.loginStatus)
+export const getLoginStatus = createSelector(authState, (state) => state?.loginStatus);
+export const isAuthenticated = createSelector(authState, (state) => state?.loginStatus?.status)

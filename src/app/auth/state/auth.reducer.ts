@@ -8,6 +8,7 @@ const _authReducer = createReducer(initialState,
             ...state,
             loginCredentials: { ...action.loginCredentials },
             loginStatus: {
+                status: false,
                 message: 'Login Process started'
             }
         }
@@ -16,6 +17,7 @@ const _authReducer = createReducer(initialState,
         return {
             ...state,
             loginStatus: {
+                status: true,
                 message: 'logged in Success'
             }
         }
@@ -24,6 +26,7 @@ const _authReducer = createReducer(initialState,
         return {
             ...state,
             loginStatus: {
+                status: false,
                 message: 'logged in Failed'
             }
         }

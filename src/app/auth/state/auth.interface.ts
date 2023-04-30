@@ -8,5 +8,6 @@ export interface Login {
     password: string;
 }
 export interface LoginStatus {
+    status: boolean;
     message: string;
 }

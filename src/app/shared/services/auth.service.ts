@@ -14,4 +14,7 @@ export class AuthService {
   loginUser(userName: string, password: string): Observable<any> {
     return this.http.get('http://localhost:3000/loginUser')
   }
+  signUpUser(userName: string, password: string): Observable<any> {
+    return this.http.get('http://localhost:3000/signUpUser')
+  }
 }

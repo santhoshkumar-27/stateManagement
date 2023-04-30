@@ -1,1 +1,27 @@
-<p>signup works!</p>
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <h3>signup</h3>
+        <hr>
+        <form name="userInfor" [formGroup]="userInfor" (ngSubmit)="onSignupFormSubmit()">
+            <div class="mb-3">
+                <label for="userName">User name</label>
+                <input type="text" class="form-control" name="userName" id="userName" formControlName="userName">
+            </div>
+            <ng-container *ngIf="f['userName'].touched && f['userName'].invalid">
+                <ng-container *ngIf="getControls('userName')!['errors']!['required']">
+                    <span class="invalid-feedback">User name is required</span>
+                </ng-container>
+            </ng-container>
+            <div class="mb-3">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" name="password" id="password" formControlName="password">
+                <ng-container *ngIf="f['password'].touched && f['password'].invalid">
+                    <ng-container *ngIf="getControls('password')!['errors']!['required']">
+                        <span class="invalid-feedback">Password is required</span>
+                    </ng-container>
+                </ng-container>
+            </div>
+            <button type="submit" class="btn btn-primary" [disabled]="userInfor.invalid">Signup</button>
+        </form>
+    </div>
+</div>

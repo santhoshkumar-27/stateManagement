@@ -1,5 +1,8 @@
 {
     "loginUser": {
         "message": "success fully logined"
+    },
+    "signUpUser": {
+        "message":"success fully signup"
     }
 }

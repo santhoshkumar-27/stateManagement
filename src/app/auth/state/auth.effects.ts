@@ -51,10 +51,50 @@ export class AuthEffects {
         })
     ));
 
+    signUpUser$ = createEffect(() => this.action$.pipe(
+        ofType(Auth.authSignupAction),
+        exhaustMap((action) => {
+            this.store.dispatch(loadingStartAction({ message: 'Sign-up in progress' }))
+            return this.authService.
+            signUpUser(action.userName, action.password)
+                .pipe(
+                    debounceTime(1000),
+                    map((value) => {
+                        this.store.dispatch(loadingEndAction())
+                        this.store.dispatch(errorStartAction({
+                            error: {
+                                message: 'Successfully Signed in',
+                                type: 'SUCCESS'
+                            }
+                        }))
+                        return Auth.signupSuccessAction()
+                    }
+                    ),
+                    catchError(() => {
+                        this.store.dispatch(loadingEndAction())
+                        this.store.dispatch(errorStartAction({
+                            error: {
+                                message: 'Failed to logged in',
+                                type: 'FAILURE'
+                            }
+                        }))
+                        return of(Auth.signupFailedAction())
+                    })
+                )
+        })
+    ));
+
     loginRedirect$ = createEffect(() => {
         return this.action$.pipe(
             ofType(Auth.loginSuccessAction),
             map((action) => this.router.navigate(['home']))
         )
-    }, {dispatch: false})
+    }, {dispatch: false});
+
+    signUpRedirect$ = createEffect(() => {
+        return this.action$.pipe(
+            ofType(Auth.signupSuccessAction),
+            map((action) => this.router.navigate(['home']))
+        )
+    }, {dispatch: false});
 }

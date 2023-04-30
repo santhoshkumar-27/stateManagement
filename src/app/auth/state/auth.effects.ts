@@ -56,7 +56,7 @@ export class AuthEffects {
         exhaustMap((action) => {
             this.store.dispatch(loadingStartAction({ message: 'Sign-up in progress' }))
             return this.authService.
-            signUpUser(action.userName, action.password)
+                signUpUser(action.userName, action.password)
                 .pipe(
                     debounceTime(1000),
                     map((value) => {
@@ -89,12 +89,12 @@ export class AuthEffects {
             ofType(Auth.loginSuccessAction),
             map((action) => this.router.navigate(['home']))
         )
-    }, {dispatch: false});
+    }, { dispatch: false });
 
     signUpRedirect$ = createEffect(() => {
         return this.action$.pipe(
             ofType(Auth.signupSuccessAction),
             map((action) => this.router.navigate(['home']))
         )
-    }, {dispatch: false});
+    }, { dispatch: false });
 }

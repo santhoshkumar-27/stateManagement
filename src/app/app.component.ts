@@ -5,6 +5,7 @@ import { Confirmable, actualDecorator } from './decorators/confirmable.decorator
 import { AppState } from './state/app.state';
 import { Store } from '@ngrx/store';
 import { sharedErrorSelector, sharedLoadingSelector } from './shared/state/shared.selector';
+import { autoLoginAction } from './auth/state/auth.action';
 
 @Component({
   selector: 'app-root',
@@ -18,6 +19,7 @@ export class AppComponent implements OnInit {
   title = 'stateManagement';
   ngOnInit(): void {
     // this.myMethod('abce');
+    this.store.dispatch(autoLoginAction())
   }
   // @Confirmable({title: 'Delete Confirmation', decription: 'Are you sure you want to delete?'})
   // @actualDecorator

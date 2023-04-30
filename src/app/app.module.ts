@@ -15,6 +15,7 @@ import { IndexComponent } from './post/index/index.component';
 import { EffectsModule } from '@ngrx/effects';
 import { SharedModule } from './shared/shared.module';
 import { appReducer } from './state/app.state';
+import { appEffects } from './state/app.effects';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { appReducer } from './state/app.state';
     HttpClientModule,
     ReactiveFormsModule,
     StoreModule.forRoot(appReducer),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([...appEffects]),
     // StoreModule.forRoot({}),
     StoreDevtoolsModule.instrument({
       // maxAge: 25,

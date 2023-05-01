@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Observable, exhaustMap, of } from 'rxjs';
 import { isAuthenticated } from 'src/app/auth/state/auth.selector';
 import { AppState } from 'src/app/state/app.state';
 
@@ -20,7 +20,15 @@ export class AuthGuard implements CanActivate {
     //   return true;
     // }
     // this.router.navigate(['auth'])
-    return true;
+    return this.store.select(isAuthenticated).pipe(
+      exhaustMap((authenticated) => {
+        if (authenticated) {
+          return of(true)
+        }
+        this.router.navigate(['auth'])
+        return of(false);
+      })
+    );
   }
 
 }

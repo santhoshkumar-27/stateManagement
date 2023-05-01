@@ -23,7 +23,6 @@ export class AddPostComponent implements OnInit, OnDestroy {
     private store: Store<AppState>,
     private fb: FormBuilder,
     private route: Router,
-    private activatedRoute: ActivatedRoute,
   ) {
   }
 
@@ -35,11 +34,12 @@ export class AddPostComponent implements OnInit, OnDestroy {
     if (this.route.url.includes('add-post')) {
       this.invokeSave = true;
     } else {
-      this.id = this.activatedRoute.snapshot.params['id'];
-      // this.store$ = this.store.select(getPostById, { id: this.id }).subscribe((res: any) => {
-      //   this.fromStatePostDataHolder = res;
-      //   this.patchForm()
-      // })
+      this.store$ = this.store.select(getPostById).subscribe((res: any) => {
+        if (!res) { return; }
+        this.fromStatePostDataHolder = res;
+        this.id = res['id'];
+        this.patchForm()
+      })
     }
   }
   get f(): any {

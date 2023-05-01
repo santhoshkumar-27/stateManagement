@@ -17,6 +17,7 @@ import { SharedModule } from './shared/shared.module';
 import { appReducer, clearState } from './state/app.state';
 import { appEffects } from './state/app.effects';
 import { AuthTokenInterceptor } from './shared/interceptor/auth-token.interceptor';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { AuthTokenInterceptor } from './shared/interceptor/auth-token.intercepto
       // maxAge: 25,
       logOnly: environment.production
     }),
+    StoreRouterConnectingModule.forRoot(),
     NgbModule,
     SharedModule,
   ],

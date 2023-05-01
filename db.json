@@ -4,5 +4,17 @@
     },
     "signUpUser": {
         "message":"success fully signup"
-    }
+    },
+    "postLists": [
+        {
+            "id": 1,
+            "firstName": "santhoshkumar",
+            "lastName": "viswanathan"
+        },
+        {
+            "id": 2,
+            "firstName": "xyz",
+            "lastName": "abc"
+        }
+    ]
 }

@@ -3,7 +3,7 @@ import { Post } from '../state/post.interface';
 import { Store } from '@ngrx/store';
 import { getPostList } from '../state/post.selector';
 import { AppState } from 'src/app/state/app.state';
-import { deletePost } from '../state/post.action';
+import { deletePost, getPostListAction } from '../state/post.action';
 import { Confirmable } from 'src/app/decorators/confirmable.decorator';
 
 @Component({
@@ -16,6 +16,7 @@ export class PostsComponent implements OnInit {
   constructor(private store: Store<AppState>) { }
 
   ngOnInit(): void {
+    this.store.dispatch(getPostListAction())
   }
   @Confirmable({
     title: 'Delete confirmation',

@@ -36,10 +36,10 @@ export class AddPostComponent implements OnInit, OnDestroy {
       this.invokeSave = true;
     } else {
       this.id = this.activatedRoute.snapshot.params['id'];
-      this.store$ = this.store.select(getPostById, { id: this.id }).subscribe((res: any) => {
-        this.fromStatePostDataHolder = res;
-        this.patchForm()
-      })
+      // this.store$ = this.store.select(getPostById, { id: this.id }).subscribe((res: any) => {
+      //   this.fromStatePostDataHolder = res;
+      //   this.patchForm()
+      // })
     }
   }
   get f(): any {

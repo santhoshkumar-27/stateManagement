@@ -17,7 +17,7 @@ import { appReducer, clearState } from './state/app.state';
 import { appEffects } from './state/app.effects';
 import { AuthTokenInterceptor } from './shared/interceptor/auth-token.interceptor';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
-import { CustomSerializer } from './shared/custom.serializer';
+import { CustomSerializer } from './shared/router-state/custom.serializer';
 
 @NgModule({
   declarations: [
@@ -40,7 +40,7 @@ import { CustomSerializer } from './shared/custom.serializer';
       logOnly: environment.production
     }),
     StoreRouterConnectingModule.forRoot({
-      serializer: CustomSerializer 
+      serializer: CustomSerializer
     }),
     NgbModule,
     SharedModule,

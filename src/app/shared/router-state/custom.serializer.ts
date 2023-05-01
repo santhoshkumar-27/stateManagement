@@ -6,7 +6,7 @@ export interface RouterStateUrl {
     params: Params;
     queryParams: Params;
 }
-
+export const ROUTER_STATE_NAME = 'router'
 export class CustomSerializer implements RouterStateSerializer<RouterStateUrl> {
 
     serialize(routerState: RouterStateSnapshot): RouterStateUrl {

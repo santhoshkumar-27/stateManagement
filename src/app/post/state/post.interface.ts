@@ -1,8 +1,8 @@
+import { EntityState } from "@ngrx/entity";
 export interface Post {
     postLists: PostList[]
 }
 
-import { EntityState, createEntityAdapter } from "@ngrx/entity";
 
 export interface PostList {
     id?: number;
@@ -11,4 +11,3 @@ export interface PostList {
 }
 
 export interface PostState extends EntityState<PostList>{}
-export const postsAdaptor = createEntityAdapter<PostList>();

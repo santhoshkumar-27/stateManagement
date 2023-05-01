@@ -1,8 +1,8 @@
 import { createReducer, on } from "@ngrx/store"
-import { initialState } from "./post.state"
+import { initialState, postsAdaptor } from "./post.state"
 import { addPostList, deletePost, getPostListAction, loadPostListAction, updatePost } from "./post.action";
 import { deepClone } from "src/app/shared/utilit";
-import { PostList, postsAdaptor } from "./post.interface";
+import { PostList } from "./post.interface";
 
 const _postReducer = createReducer(initialState, on(
     addPostList, (state, action) => {

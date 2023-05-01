@@ -1,6 +1,6 @@
 import { Injector, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
@@ -16,6 +16,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { SharedModule } from './shared/shared.module';
 import { appReducer, clearState } from './state/app.state';
 import { appEffects } from './state/app.effects';
+import { AuthTokenInterceptor } from './shared/interceptor/auth-token.interceptor';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { appEffects } from './state/app.effects';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    StoreModule.forRoot(appReducer, { metaReducers: [clearState]}),
+    StoreModule.forRoot(appReducer, { metaReducers: [clearState] }),
     EffectsModule.forRoot([...appEffects]),
     // StoreModule.forRoot({}),
     StoreDevtoolsModule.instrument({
@@ -41,7 +42,13 @@ import { appEffects } from './state/app.effects';
     NgbModule,
     SharedModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthTokenInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
@@ -50,4 +57,4 @@ export class AppModule {
   constructor(private injector: Injector) {
     AppModule.injector = injector;
   }
- }
+}

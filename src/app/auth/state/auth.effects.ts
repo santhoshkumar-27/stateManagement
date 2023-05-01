@@ -38,7 +38,7 @@ export class AuthEffects {
                                 type: 'SUCCESS'
                             }
                         }))
-                        return Auth.loginSuccessAction()
+                        return Auth.loginSuccessAction({ redirect: true })
                     }
                     ),
                     catchError(() => {
@@ -75,7 +75,7 @@ export class AuthEffects {
                                 type: 'SUCCESS'
                             }
                         }))
-                        return Auth.signupSuccessAction()
+                        return Auth.signupSuccessAction({ redirect: true })
                     }
                     ),
                     catchError(() => {
@@ -95,7 +95,9 @@ export class AuthEffects {
     loginRedirect$ = createEffect(() => {
         return this.action$.pipe(
             ofType(...[Auth.loginSuccessAction, Auth.signupSuccessAction]),
-            map((action) => this.router.navigate(['home']))
+            map((action) => {
+                return action.redirect ? this.router.navigate(['home']) : of(null)
+            })
         )
     }, { dispatch: false });
 
@@ -109,16 +111,16 @@ export class AuthEffects {
         return this.action$.pipe(
             ofType(Auth.autoLoginAction),
             map((action) => {
-                const user = this.authService.getUserFromLocal();
-                if (user) {
-                    return of(this.store.dispatch(Auth.authLoginAction({ loginCredentials: user })));
-                    // return Auth.authLoginAction({ loginCredentials: user });
-
-                }
-                return this.router.navigate(['auth'])
+                this.store.dispatch(errorStartAction({
+                    error: {
+                        message: 'Successfully Signed in',
+                        type: 'SUCCESS'
+                    }
+                }))
+                return Auth.loginSuccessAction({redirect: action.redirect})
             })
         )
-    }, { dispatch: false })
+    })
 
     autoLogout$ = createEffect(() => {
         return this.action$.pipe(

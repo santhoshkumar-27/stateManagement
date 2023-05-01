@@ -6,6 +6,7 @@ import { AppState } from './state/app.state';
 import { Store } from '@ngrx/store';
 import { sharedErrorSelector, sharedLoadingSelector } from './shared/state/shared.selector';
 import { autoLoginAction } from './auth/state/auth.action';
+import { AuthService } from './shared/services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -15,11 +16,18 @@ import { autoLoginAction } from './auth/state/auth.action';
 export class AppComponent implements OnInit {
   loadingInformation$ = this.store.select(sharedLoadingSelector);
   errorInformation$ = this.store.select(sharedErrorSelector)
-  constructor(private store: Store<AppState>) {}
+  constructor(
+    private store: Store<AppState>,
+    private authService: AuthService,
+  ) {}
   title = 'stateManagement';
   ngOnInit(): void {
     // this.myMethod('abce');
-    this.store.dispatch(autoLoginAction())
+    const user = this.authService.getUserFromLocal();
+    if (user) {
+
+      this.store.dispatch(autoLoginAction({loginCredentials: user, redirect: false}))
+    }
   }
   // @Confirmable({title: 'Delete Confirmation', decription: 'Are you sure you want to delete?'})
   // @actualDecorator

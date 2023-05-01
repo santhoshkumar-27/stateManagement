@@ -1,9 +1,19 @@
 import { createReducer, on } from "@ngrx/store"
 import { initialState } from "./auth.state"
-import { authLoginAction, authSignupAction, loginFailedAction, loginSuccessAction, signupFailedAction, signupSuccessAction } from "./auth.action"
+import { authLoginAction, authSignupAction, autoLoginAction, loginFailedAction, loginSuccessAction, signupFailedAction, signupSuccessAction } from "./auth.action"
 
 const _authReducer = createReducer(initialState,
     on(authLoginAction, (state, action) => {
+        return {
+            ...state,
+            loginCredentials: { ...action.loginCredentials },
+            loginStatus: {
+                status: false,
+                message: 'Login Process started'
+            }
+        }
+    }),
+    on(autoLoginAction, (state, action) => {
         return {
             ...state,
             loginCredentials: { ...action.loginCredentials },

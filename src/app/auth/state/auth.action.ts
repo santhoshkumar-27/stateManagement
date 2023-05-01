@@ -11,10 +11,10 @@ const AUTO_LOGIN = '[Auth page] auto login';
 export const AUTO_LOGOUT = '[Auht page] auto logout';
 
 export const authLoginAction = createAction(LOGIN_START, props<{loginCredentials: Login}>());
-export const loginSuccessAction = createAction(LOGIN_SUCCESs);
+export const loginSuccessAction = createAction(LOGIN_SUCCESs, props<{redirect: boolean}>());
 export const loginFailedAction = createAction(LOGIN_FAILED);
 export const authSignupAction = createAction(SIGNUP_START, props<{userName: string; password: string;}>());
-export const signupSuccessAction = createAction(SIGNUP_SUCCESS);
+export const signupSuccessAction = createAction(SIGNUP_SUCCESS, props<{redirect: boolean}>());
 export const signupFailedAction = createAction(SIGNUP_FAILED);
-export const autoLoginAction = createAction(AUTO_LOGIN);
+export const autoLoginAction = createAction(AUTO_LOGIN, props<{loginCredentials: Login, redirect: boolean}>());
 export const autoLogoutAction = createAction(AUTO_LOGOUT);

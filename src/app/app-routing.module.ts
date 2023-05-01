@@ -24,7 +24,7 @@ const routes: Routes = [
   {
     path: 'post',
     canActivate: [AuthGuard],
-    loadChildren: () => import('./post/post/post.module').then(m => m.PostModule),
+    loadChildren: () => import('./post/post.module').then(m => m.PostModule),
   },
   {
     path: 'auth',

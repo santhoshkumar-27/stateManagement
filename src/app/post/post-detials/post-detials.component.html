@@ -1,0 +1,11 @@
+<div *ngIf="postDetails$ | async as postDetails">
+    <span>
+        {{postDetails.id}}
+    </span>
+    <span>
+        {{postDetails.firstName}}
+    </span>
+    <span>
+        {{postDetails.lastName}}
+    </span>
+</div>

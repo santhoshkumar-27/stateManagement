@@ -117,7 +117,7 @@ export class AuthEffects {
                         type: 'SUCCESS'
                     }
                 }))
-                return Auth.loginSuccessAction({redirect: action.redirect})
+                return Auth.loginSuccessAction({ redirect: action.redirect })
             })
         )
     })

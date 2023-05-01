@@ -6,6 +6,8 @@ import { AppState } from 'src/app/state/app.state';
 import { addPostList, updatePost } from '../state/post.action';
 import { ActivatedRoute, Router } from '@angular/router';
 import { getPostById, getPostList } from '../state/post.selector';
+import { Update } from '@ngrx/entity';
+import { PostList } from '../state/post.interface';
 
 @Component({
   selector: 'app-add-post',
@@ -79,7 +81,13 @@ export class AddPostComponent implements OnInit, OnDestroy {
     rightSideButton: 'Update',
   })
   updateDataOnState() {
-    this.store.dispatch(updatePost({ data: {...this.form.value, id: this.id} }))
+    const updatedPost: Update<PostList> = {
+      id: this.id,
+      changes: {
+        ...this.form.value
+      }
+    }
+    this.store.dispatch(updatePost({ data: updatedPost }))
     this.route.navigate(['post'])
   }
   ngOnDestroy(): void {

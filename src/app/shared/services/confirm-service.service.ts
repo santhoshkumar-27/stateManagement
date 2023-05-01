@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { ModelpopComponent } from './modelpop/modelpop.component';
+import { ModelpopComponent } from '../components/modelpop/modelpop.component';
 import { Observable } from 'rxjs';
 
 @Injectable({

@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { getPostList } from '../state/post.selector';
 import { AppState } from 'src/app/state/app.state';
 import { deletePost, getPostListAction } from '../state/post.action';
-import { Confirmable } from 'src/app/decorators/confirmable.decorator';
+import { Confirmable } from 'src/app/shared/decorators/confirmable.decorator';
 
 @Component({
   selector: 'app-posts',

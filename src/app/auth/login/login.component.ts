@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/state/app.state';
 import { authLoginAction } from '../state/auth.action';
 import { getLoginStatus, getUsernameAndPassword } from '../state/auth.selector';
-import { Confirmable } from 'src/app/decorators/confirmable.decorator';
+import { Confirmable } from 'src/app/shared/decorators/confirmable.decorator';
 
 @Component({
   selector: 'app-login',

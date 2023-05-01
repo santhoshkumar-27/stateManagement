@@ -16,8 +16,8 @@ export function actualDecorator(target: any, propertyKey: string, descriptor: Pr
 
 import { Inject, Type, inject } from '@angular/core';
 import { take } from 'rxjs/operators';
-import { AppModule } from '../app.module';
-import { ConfirmServiceService } from '../confirm-service.service';
+import { AppModule } from '../../app.module';
+import { ConfirmServiceService } from '../services/confirm-service.service';
 
 // Pass confirmService as option of decorator in prop confirm
 // to access to that service and use confirm function

@@ -6,6 +6,7 @@ import { StoreModule } from '@ngrx/store';
 import { SHARED_STATE_NAME } from './state/shared.state';
 import { sharedReducer } from './state/shared.reducer';
 import { ErrorMessageComponent } from './components/error-message/error-message.component';
+import { ModelpopComponent } from './components/modelpop/modelpop.component';
 
 
 
@@ -13,6 +14,7 @@ import { ErrorMessageComponent } from './components/error-message/error-message.
   declarations: [
     LoadingSpinnerComponent,
     ErrorMessageComponent,
+    ModelpopComponent
   ],
   imports: [
     CommonModule,
@@ -21,7 +23,8 @@ import { ErrorMessageComponent } from './components/error-message/error-message.
   ],
   exports: [
     LoadingSpinnerComponent,
-    ErrorMessageComponent
+    ErrorMessageComponent,
+    ModelpopComponent
   ]
 })
 export class SharedModule { }

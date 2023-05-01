@@ -7,7 +7,6 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ModelpopComponent } from './modelpop/modelpop.component';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -18,11 +17,11 @@ import { appReducer, clearState } from './state/app.state';
 import { appEffects } from './state/app.effects';
 import { AuthTokenInterceptor } from './shared/interceptor/auth-token.interceptor';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { CustomSerializer } from './shared/custom.serializer';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ModelpopComponent,
     HomeComponent,
     HeaderComponent,
     IndexComponent,
@@ -40,7 +39,9 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
       // maxAge: 25,
       logOnly: environment.production
     }),
-    StoreRouterConnectingModule.forRoot(),
+    StoreRouterConnectingModule.forRoot({
+      serializer: CustomSerializer 
+    }),
     NgbModule,
     SharedModule,
   ],

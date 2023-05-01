@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ModelpopComponent } from './modelpop/modelpop.component';
+import { ModelpopComponent } from './shared/components/modelpop/modelpop.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Confirmable, actualDecorator } from './decorators/confirmable.decorator';
+import { Confirmable, actualDecorator } from './shared/decorators/confirmable.decorator';
 import { AppState } from './state/app.state';
 import { Store } from '@ngrx/store';
 import { sharedErrorSelector, sharedLoadingSelector } from './shared/state/shared.selector';

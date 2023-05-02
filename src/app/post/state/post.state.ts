@@ -5,5 +5,5 @@ import { PostList, PostState } from "./post.interface";
 //     postLists: []
 // }
 
-export const postsAdaptor = createEntityAdapter<PostList>();
-export const initialState: PostState = postsAdaptor.getInitialState()
+export const postsAdaptor = createEntityAdapter<PostList>(); // entity adaptor for the posts
+export const initialState: PostState = postsAdaptor.getInitialState() // initial state

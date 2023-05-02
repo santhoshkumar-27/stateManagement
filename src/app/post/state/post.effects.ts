@@ -52,7 +52,8 @@ export class PostEffects {
         return this.action$.pipe(
             ofType(ROUTER_NAVIGATION),
             filter((r: RouterNavigatedAction) => {
-                return r.payload.routerState.url.startsWith('/post/details')
+                const url = r.payload.routerState.url;
+                return url.startsWith('/post/details') || url.startsWith('/post/edit');
             }),
             map((r: any) => {
                 return r.payload.routerState['params']['id']

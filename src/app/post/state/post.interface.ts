@@ -10,4 +10,6 @@ export interface PostList {
     lastName: string
 }
 
-export interface PostState extends EntityState<PostList>{}
+export interface PostState extends EntityState<PostList>{
+    count: number;
+}

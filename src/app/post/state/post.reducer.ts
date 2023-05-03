@@ -17,7 +17,7 @@ const _postReducer = createReducer(initialState, on(
         //         postData
         //     ]
         // }
-        return postsAdaptor.addOne(action.data, state)
+        return postsAdaptor.addOne(action.data, {...state, count: state.count + 1})
     }
 ), on(updatePost, (state, action) => {
     const data = action.data;
@@ -51,7 +51,7 @@ const _postReducer = createReducer(initialState, on(
     //     ...state,
     //     postLists: action.data
     // }
-    return postsAdaptor.setAll(action.data, state);
+    return postsAdaptor.setAll(action.data, {...state, count: state.count + 1});
 }));
 
 export function postReducer(state: any, action: any) {

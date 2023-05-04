@@ -1,5 +1,6 @@
 {
   "name": "state-management",
+  "description": "finished state management until entity",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
